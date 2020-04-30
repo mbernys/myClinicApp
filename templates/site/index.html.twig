@@ -1,0 +1,46 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>myClinicApp</h1>
+    {% if is_granted('ROLE_USER')%}
+    <div>
+        <a href="{{ path('app_logout') }}">{{ 'Sign out!' | trans }}</a>
+    </div>
+    {% endif %}
+    {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY')%}
+    <form method="get" action="{{ path('app_login') }}">
+        <div class="form-group field-button">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Login page!</button>
+        </div>
+    </form>
+    <form method="get" action="{{ path('app_register') }}">
+        <div class="form-group field-button">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Register page!</button>
+        </div>
+    </form>
+    {% endif %}
+    {% if is_granted('ROLE_USER')%}
+    <form method="get" action="{{ path('app_visit_addvisit') }}">
+        <div class="form-group field-button">
+            <button type="submit" class="btn btn-warning btn-lg btn-block">Add visit!</button>
+        </div>
+    </form>
+    {% endif %}
+
+    {% if is_granted('ROLE_PATIENT')%}
+        <form method="get" action="{{ path('app_visit_listvisit') }}">
+            <div class="form-group field-button">
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">Show visits</button>
+            </div>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

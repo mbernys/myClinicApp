@@ -1,0 +1,39 @@
+easy_admin:
+    user:
+        name_property_path: email
+    site_name: 'myClinicApp'
+    formats:
+        datetime: 'd/m/Y H:i'
+    design:
+        menu:
+            [{entity: 'Patient' , icon: 'user'},
+             {entity: 'Doctor' , icon: 'user-nurse'},
+             {entity: 'Visit' , icon: 'calendar'}
+             {entity: 'Specialization' , icon: 'cogs'}
+            ]
+    entities:
+        Doctor:
+            translation_domain: doctor
+            class: App\Entity\Doctor
+            show:
+                fields: ['firstName', 'lastName' , 'specialization', {property: 'visits' , template: 'admin/visits.html.twig'}]
+            search:
+                fields: ['firstName', 'lastName' , 'specialization.name']
+
+        Specialization:
+            class: App\Entity\Specialization
+
+        Patient:
+            class: App\Entity\Patient
+            show:
+                fields: [{property: 'firstName'},{property: 'lastName'}]
+            edit:
+                fields: [{property: 'firstName'},{property: 'lastName'}]
+            list:
+                fields: [{property: 'firstName'},{property: 'lastName'}]
+
+        Visit:
+            class: App\Entity\Visit
+
+    list:
+        actions: ['show']

@@ -1,0 +1,19 @@
+Visits: Wizyty
+Specialization: Specjalizacja
+Last name: Nazwisko
+First name: Imię
+Email: Email
+ID: ID
+Doctor: Lekarz
+Patient: Pacjent
+Visit: Wizyta
+Start date: Początek wizyty
+End date: Koniec wizyty
+Name: Nazwa
+Year: Rok
+Month: Miesiąc
+Day: Dzień
+Hour: Godzina
+Minute: Minuta
+Sign out!: Wyloguj się!
+action.new: Dodaj lekarza

@@ -1,0 +1,46 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>visit List</h1>
+
+    <div>
+        <a href="{{ path('app_visit_addvisit') }}">add new visit</a>
+    </div>
+
+<table class="table">
+<thead>
+<tr>
+    <th>Lp.</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Doctor</th>
+</tr>
+</thead>
+<tbody>
+    {% for item in visits %}
+        <tr>
+            <td class="">
+                {{ item.id }}
+            </td>
+            <td class="">
+                {{ item.startDate | date('Y/m/d H:i') }}
+            </td>
+            <td class="">
+                {{ item.endDate | date('m:s') }}
+            </td>
+            <td class="">
+                {{ item.doctor }}
+            </td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+{% endblock %}

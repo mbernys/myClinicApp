@@ -1,0 +1,38 @@
+{%  trans_default_domain easyadmin_config('translation_domain') %}
+{% extends  easyadmin_config('design.templates.layout') %}
+
+{%  block body_class 'page-login' %}
+
+{% block wrapper_wrapper %}
+
+    <div class="login-wrapper">
+        <header class="main-header mb-4">
+            <div id="header-logo">
+                {% block header_logo %}
+                    <a class="logo {{ easyadmin_config('site_name')|length > 14 ? 'logo-long' }}">
+                        {{ easyadmin_config('site_name') }}
+                    </a>
+                {% endblock header_logo %}
+            </div>
+        </header>
+
+        {% if error|default(false) %}
+            <div class="w-100 alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <section class="content">
+            {{ form_start(visitForm) }}
+            {{ form_row(visitForm.startDate) }}
+            {{ form_row(visitForm.doctor) }}
+
+            <div class="form-group field-button">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="this.form.submit();">
+                    Add visit
+                </button>
+            </div>
+            {{ form_end(visitForm) }}
+        </section>
+    </div>
+{% endblock %}
